@@ -18,3 +18,6 @@ so the uart waveform should be as following<br />
 5-input buffer<br />
 
 
+
+
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/81904314/178120592-2cb83ce1-d832-4594-bcfa-ac3563aff66c.png)
