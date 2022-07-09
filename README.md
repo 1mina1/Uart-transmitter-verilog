@@ -22,4 +22,5 @@ so the uart waveform should be as following<br />
 
 ![Untitled Diagram drawio](https://user-images.githubusercontent.com/81904314/178120592-2cb83ce1-d832-4594-bcfa-ac3563aff66c.png)
 
-<br /># FSM
+<br />next is a brief of all the blocks<br />
+# FSM
