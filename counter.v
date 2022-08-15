@@ -14,7 +14,6 @@
 
 /////////input and outputs ports declaration////////////
 module counter #(parameter CounterWIDTH = 3) (
-  input    wire                         counter_RST_SYN,
   input    wire                         counter_RST_ASYN,
   input    wire                         counter_CLK,
   input    wire                         counter_En,
@@ -27,8 +26,6 @@ module counter #(parameter CounterWIDTH = 3) (
   always@(posedge counter_CLK or negedge counter_RST_ASYN)
   begin
     if(!counter_RST_ASYN)
-      count <= 'b0;
-    else if(!counter_RST_SYN)
       count <= 'b0;
     else
       count <= count_comb;
