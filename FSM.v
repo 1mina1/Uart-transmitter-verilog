@@ -12,7 +12,6 @@
 //------------------------------------------------
 // PURPOSE:   finite state machine act as controller for uart TX\
 module FSM(//defining the FSM input and outputs ports
-  input     wire             FSM_RST_SYN,
   input     wire             FSM_RST_ASYN,
   input     wire             FSM_CLK,
   input     wire             FSM_DataValid,
@@ -20,7 +19,8 @@ module FSM(//defining the FSM input and outputs ports
   input     wire             FSM_ParEn,
   output    reg              FSM_SerEn,
   output    reg    [1:0]     FSM_MuxSel,
-  output    reg              FSM_Busy
+  output    reg              FSM_Busy,
+  output    wire             FSM_BuffEn
   );
   
   /////////defining the states , gray encoding is used////////
@@ -38,8 +38,6 @@ module FSM(//defining the FSM input and outputs ports
   always@(posedge FSM_CLK or negedge FSM_RST_ASYN)
   begin
     if(!FSM_RST_ASYN)
-      Current_State <= IDLE ;
-    else if((!FSM_RST_SYN))
       Current_State <= IDLE ;
     else
       Current_State <= Next_State ;
@@ -122,5 +120,6 @@ module FSM(//defining the FSM input and outputs ports
                              end
     endcase
   end
+  assign FSM_BuffEn = ((~|FSM_MuxSel)&(FSM_DataValid))|(~FSM_Busy);
 endmodule
 
