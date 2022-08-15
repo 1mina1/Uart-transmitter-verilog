@@ -16,7 +16,6 @@
 module Seralizer #(parameter WIDTH = 3)(
   input    wire    [2**(WIDTH)-1:0]    Seralizer_ParallelData,
   input    wire                        Seralizer_CLK,
-  input    wire                        Seralizer_RST_SYN,
   input    wire                        Seralizer_RST_ASYN,
   input    wire                        Seralizer_En,
   output   wire                        Seralizer_done,
@@ -26,7 +25,6 @@ module Seralizer #(parameter WIDTH = 3)(
   wire    [WIDTH-1:0]    CountToPISO;
   
   counter #(.CounterWIDTH(WIDTH)) C0 (
-  .counter_RST_SYN(Seralizer_RST_SYN),
   .counter_RST_ASYN(Seralizer_RST_ASYN),
   .counter_CLK(Seralizer_CLK),
   .counter_En(Seralizer_En),
